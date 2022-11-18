@@ -19,15 +19,7 @@ const TableBody = () => {
     const [search, setSearch] = useState("");
     const [sort, setSort] = useState({ sort: "fName", order: "asc" });
     const [isLoading, setIsLoading] = useState(true);
-    // pagaination data
-    const postsPerPage = 10;
-    const pagesVisited = pageNumber * postsPerPage;
 
-    const pageCount = Math.ceil(datas.length / postsPerPage);
-
-    const changePage = ({ selected }) => {
-        setPageNumber(selected);
-    };
     // fetch API
     const fetchData = async () => {
         const data = await axios.get(`/api/office?search=${search}&sort=${sort.sort},${sort.order
@@ -42,6 +34,15 @@ const TableBody = () => {
             })
     }, [search, sort])
 
+    // pagaination data
+    const postsPerPage = 10;
+    const pagesVisited = pageNumber * postsPerPage;
+
+    const pageCount = Math.ceil(datas?.length / postsPerPage);
+
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
+    };
 
     return (
         <Container>
@@ -71,7 +72,7 @@ const TableBody = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {datas.slice(pagesVisited, pagesVisited + postsPerPage).map((item, idx) => (
+                            {datas?.slice(pagesVisited, pagesVisited + postsPerPage).map((item, idx) => (
                                 <tr key={idx}>
                                     <td>{idx + 1}</td>
                                     <td>{item._id.slice(-5)}</td>
