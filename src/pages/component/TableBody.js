@@ -22,7 +22,7 @@ const TableBody = () => {
 
     // fetch API
     const fetchData = async () => {
-        const data = await axios.get(`/api/office?search=${search}&sort=${sort.sort},${sort.order
+        const data = await axios.get(`https://guarded-garden-00467.herokuapp.com/api/office?search=${search}&sort=${sort.sort},${sort.order
             }`);
         return data
     }

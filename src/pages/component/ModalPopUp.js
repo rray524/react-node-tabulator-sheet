@@ -41,7 +41,7 @@ const ModalPopUp = (props) => {
     const id = form.id.value;
 
     const fetchDataDetails = async (id, firstName, middleName, lastName, doj, department, salary) => {
-      const data = await axios.patch(`/api/office/update-one/${id}`, {
+      const data = await axios.patch(`https://guarded-garden-00467.herokuapp.com/api/office/update-one/${id}`, {
         fName: firstName,
         mName: middleName,
         lName: lastName,
