@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { BsFillArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 
 const Sort = ({ sort, setSort }) => {
+
     const onSelectChange = ({ currentTarget: input }) => {
         setSort({ sort: input.value, order: sort.order });
         // console.log(sort);
@@ -12,8 +13,10 @@ const Sort = ({ sort, setSort }) => {
     const onArrowChange = () => {
         if (sort.order === "asc") {
             setSort({ sort: sort.sort, order: "desc" });
+            // console.log(sort);
         } else {
             setSort({ sort: sort.sort, order: "asc" });
+            // console.log(sort);
         }
     };
     return (

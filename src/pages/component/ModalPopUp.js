@@ -4,8 +4,10 @@ import Button from 'react-bootstrap/Button';
 import { BsPencilSquare } from "react-icons/bs";
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ModalPopUp = (props) => {
+
   // modal local state
   const [show, setShow] = useState(false);
 
@@ -16,8 +18,6 @@ const ModalPopUp = (props) => {
 
   };
 
-
-  // console.log(props);
   // assign form elements value from props
   const [firstName, setFirstName] = useState(props.fname);
   const [middleName, setMiddleName] = useState(props.mname);
@@ -26,6 +26,7 @@ const ModalPopUp = (props) => {
   const [department, setDepartment] = useState(props.department);
   const [salary, setSalary] = useState(props.salary);
   const [id, setId] = useState(props.id);
+
 
   // fetch api on frontend
 
@@ -58,12 +59,26 @@ const ModalPopUp = (props) => {
       .then(res => {
         if (res) {
           setShow(false)
-          window.location.reload();
+          // window.location.reload();
+          if (res) {
+            toast("Edit Successful", {
+              className: "success-alert",
+              draggable: false,
+              position: toast.POSITION.TOP_LEFT
+            })
+          }
 
         }
       })
       .catch(err => {
         console.log(err.response.data.message ? err.response.data.message : err.response.data);
+        if (err) {
+          toast("Duplicate Name/Title", {
+            className: "error-alert",
+            draggable: false,
+            position: toast.POSITION.TOP_LEFT
+          })
+        }
       })
   }
 

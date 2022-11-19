@@ -31,8 +31,9 @@ const TableBody = () => {
             .then(res => {
                 setDatas(res.data.data)
                 setIsLoading(false)
+                // console.log(sort);
             })
-    }, [search, sort])
+    }, [search, sort, datas])
 
     // pagaination data
     const postsPerPage = 10;
